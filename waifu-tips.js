@@ -4,7 +4,8 @@
  */
 
 function loadWidget(config) {
-	let { waifuPath, apiPath, cdnPath } = config;
+	let { waifuPath, apiPath } = config;
+	cdnPath = "https://cdn.jsdelivr.net/gh/Lounode/live2d_api@1.0.8/";
 	let useCDN = false, modelList;
 	if (typeof cdnPath === "string") {
 		useCDN = true;
@@ -212,8 +213,8 @@ function loadWidget(config) {
 		showMessage(message, 4000, 10);
 		if (useCDN) {
 			if (!modelList) await loadModelList();
-			const target = randomSelection(modelList.models[modelId]);
-			loadlive2d("live2d", `${cdnPath}model/${target}/index.json`);
+			//const target = randomSelection(modelList.models[modelId]);
+			loadlive2d("live2d", `${cdnPath}model/datealive/yoshino-normal/index.json`);
 		} else {
 			loadlive2d("live2d", `${apiPath}get/?id=${modelId}-${modelTexturesId}`);
 			console.log(`Live2D 模型 ${modelId}-${modelTexturesId} 加载完成`);
